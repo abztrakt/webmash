@@ -5,6 +5,9 @@ class Base(models.Model):
     """
     title = models.CharField(max_length=256)
 
+    def __str__(self):
+        return self.title
+
 
 class Artifact(Base):
     """ Base class for digital artifacts of all kinds.
