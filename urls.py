@@ -1,5 +1,6 @@
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('webmash.views',
-    (r'^$', 'index'),
+    url(r'^objects/$', 'all_objects'),
+    url(r'^$', 'index'),
 )
