@@ -18,7 +18,7 @@ class Artifact(Base):
 class Container(Base):
     """ Class to act as a parent container which can hold many artifacts and store their order.
     """
-    related_item = models.ManyToManyField(Base, related_name='related_item', blank=True)
+    related_items = models.ManyToManyField(Base, related_name='related_items', blank=True)
 
 
 class LocalText(Artifact):
