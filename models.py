@@ -4,6 +4,7 @@ class Base(models.Model):
     """ Base class for all other models. This exists primarily so that Artifacts and Containser can be imported as peers.
     """
     title = models.CharField(max_length=256)
+    slug = models.SlugField()
 
     def __str__(self):
         return self.title
