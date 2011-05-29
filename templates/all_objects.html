@@ -3,7 +3,7 @@
 {% block content %}
 <ul>
 {% for item in all %}
-    <li>{{ item }}</li>
+    <li><a href="/object/{{ item.slug }}">{{ item }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
