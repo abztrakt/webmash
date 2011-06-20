@@ -1,6 +1,8 @@
 from django.shortcuts import render_to_response
 from webmash.models import *
 
+installed_types = ['Container', 'LocalText',]
+
 def index(request):
     return render_to_response('index.html')
 
@@ -18,7 +20,7 @@ def containers(request):
 
 def container(request, object_slug):
     object = Base.objects.get(slug=object_slug)
-    return render_to_response('container.html', {'object':object,})
+    return render_to_response('container.html', {'object':object, 'types':installed_types,})
 
 def artifacts(request):
     artifacts = Artifact.objects.all()
