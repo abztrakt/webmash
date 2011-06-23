@@ -17,10 +17,20 @@ class Artifact(Base):
 
 
 class Container(Base):
-    """ Class to act as a parent container which can hold many artifacts and store their order.
+    """ Base class for objects which can hold many artifacts and store their order.
     """
     related_items = models.ManyToManyField(Base, related_name='related_items', blank=True)
 
+class Page(Container):
+    """ Pages hold any number of artifacts and a layout.
+    """
+    pass
+
+class Folder(Container):
+    """ Folders hold any number of objects and an order in which to display them.
+    TODO: Provide a pager that can be used to go prev/next between objects.
+    """
+    pass
 
 class LocalText(Artifact):
     """ A text artifact stored locally.
