@@ -1,5 +1,6 @@
-from webmash.models import Container, LocalText
+from webmash.models import Page, Folder, LocalText
 from django.contrib import admin
 
-admin.site.register(Container)
+admin.site.register(Page)
+admin.site.register(Folder)
 admin.site.register(LocalText)
