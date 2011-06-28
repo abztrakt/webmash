@@ -21,12 +21,6 @@ def containers(request):
     containers = Container.objects.all()
     return render_to_response('all_objects.html', {'all':containers,})
 
-def container(request, object_slug):
-    """ Renders any generic object.
-    """
-    object = Base.objects.get(slug=object_slug)
-    return render_to_response('container.html', {'object':object,})
-
 def index(request):
     """ Renders the index page.
     """
