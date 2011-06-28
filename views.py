@@ -3,22 +3,17 @@ from webmash.models import *
 
 installed_types = [Page, Folder, LocalText,]
 
-def index(request):
-    """ Renders the index page.
-    """
-    return render_to_response('index.html')
-
 def all_objects(request):
     """ Renders a list of all objects in the system.
     """
     all = Base.objects.all()
     return render_to_response('all_objects.html', {'all':all,})
 
-def object(request, object_slug):
-    """ Renders any generic object.
+def artifacts(request):
+    """ Renders a list of all artifact type objects.
     """
-    object = Base.objects.get(slug=object_slug)
-    return render_to_response('object.html', {'object':object,})
+    artifacts = Artifact.objects.all()
+    return render_to_response('all_objects.html', {'all':artifacts,})
 
 def containers(request):
     """ Renders a list of alli container type objects.
@@ -32,11 +27,16 @@ def container(request, object_slug):
     object = Base.objects.get(slug=object_slug)
     return render_to_response('container.html', {'object':object,})
 
-def artifacts(request):
-    """ Renders a list of all artifact type objects.
+def index(request):
+    """ Renders the index page.
     """
-    artifacts = Artifact.objects.all()
-    return render_to_response('all_objects.html', {'all':artifacts,})
+    return render_to_response('index.html')
+
+def object(request, object_slug):
+    """ Renders any generic object.
+    """
+    object = Base.objects.get(slug=object_slug)
+    return render_to_response('object.html', {'object':object,})
 
 def page(request, page_slug):
     """ Render a page with all of it's child objects.
