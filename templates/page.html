@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Title: {{ object.title }}</h1>
-<p>The shortname or slug for this page is {{ object.slug }}.</p>
+<h1>Title: {{ page.title }}</h1>
+<p>The shortname or slug for this page is {{ page.slug }}.</p>
 <hr />
+{% for c in children %}
+{{ c }}
+<hr />
+{% endfor %}
 {% endblock %}

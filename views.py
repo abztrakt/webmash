@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 from webmash.models import *
 
-installed_types = ['Page', 'Folder', 'LocalText',]
+installed_types = [Page, Folder, LocalText,]
 
 def index(request):
     """ Renders the index page.
@@ -38,8 +38,16 @@ def artifacts(request):
     artifacts = Artifact.objects.all()
     return render_to_response('all_objects.html', {'all':artifacts,})
 
-def page(request):
+def page(request, page_slug):
     """ Render a page with all of it's child objects.
     """
-    page = Page.objects.get(slug=object_slug)
-    return render_to_response('page.html', {'object':object,})
+    page = Page.objects.get(slug=page_slug)
+    children = []
+    child_artifacts = page.related_items.values()
+    for a in child_artifacts:
+        for t in installed_types:
+            try:
+                children.append(t.objects.get(id=a['id']))
+            except:
+                pass # Not every t will have a match, so pass on the ones that fail
+    return render_to_response('page.html', {'page':page, 'children':children,})
