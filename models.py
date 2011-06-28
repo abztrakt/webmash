@@ -4,7 +4,7 @@ from django.template.loader import render_to_string
 # start Base classes
 
 class Base(models.Model):
-    """ Base class for all other models. This exists primarily so that Artifacts and Containser can be imported as peers.
+    """ Base class for all other models. This exists primarily so that Artifacts and Container can be imported as peers.
     """
     title = models.CharField(max_length=256)
     slug = models.SlugField()
