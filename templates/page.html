@@ -3,9 +3,7 @@
 {% block content %}
 <h1>Title: {{ page.title }}</h1>
 <p>The shortname or slug for this page is {{ page.slug }}.</p>
-<hr />
 {% for c in children %}
-{{ c }}
-<hr />
+{{ c.to_html_template }}
 {% endfor %}
 {% endblock %}

@@ -49,5 +49,5 @@ def page(request, page_slug):
             try:
                 children.append(t.objects.get(id=a['id']))
             except:
-                pass # Not every t will have a match, so pass on the ones that fail
+                pass # catch exceptions silently since only one of the installed types will find a match
     return render_to_response('page.html', {'page':page, 'children':children,})

@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.loader import render_to_string
 
 # start Base classes
 
@@ -14,7 +15,8 @@ class Base(models.Model):
 class Artifact(Base):
     """ Base class for digital artifacts of all kinds.
     """
-    pass
+    def to_html_template(self):
+        return render_to_string("%s.html" % self.__class__.__name__, {'self':self,})
 
 
 class Container(Base):
