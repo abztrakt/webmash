@@ -51,4 +51,4 @@ def page(request, page_slug):
                 children.append(t.objects.get(id=a['id']))
             except:
                 pass # catch exceptions silently since only one of the installed types will find a match
-    return render_to_response('page.html', {'page':page, 'children':children,})
+    return render_to_response('superpage.html', {'page':page, 'children':children,})

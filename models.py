@@ -8,6 +8,9 @@ class Base(models.Model):
     """
     title = models.CharField(max_length=256)
     slug = models.SlugField()
+    
+    def to_html_template(self):
+        return render_to_string("%s.html" % self.__class__.__name__, {'self':self,})
 
     def __str__(self):
         return self.title
@@ -15,8 +18,7 @@ class Base(models.Model):
 class Artifact(Base):
     """ Base class for digital artifacts of all kinds.
     """
-    def to_html_template(self):
-        return render_to_string("%s.html" % self.__class__.__name__, {'self':self,})
+    pass
 
 
 class Container(Base):
