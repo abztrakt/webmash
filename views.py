@@ -16,10 +16,17 @@ def artifacts(request):
     return render_to_response('all_objects.html', {'all':artifacts,})
 
 def containers(request):
-    """ Renders a list of alli container type objects.
+    """ Renders a list of all container type objects.
     """
     containers = Container.objects.all()
     return render_to_response('all_objects.html', {'all':containers,})
+
+def folder(request, folder_slug):
+    """ Renders a list of all child items in the folder.
+    """
+    folder = Folder.objects.get(slug=folder_slug)
+    children = folder.related_items.values()
+    return render_to_response('folder.html', {'children':children})
 
 def index(request):
     """ Renders the index page.

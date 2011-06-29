@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ folder.title }}</h2>
+<ul>
+{% for c in children %}
+<li>{{ c.slug }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
