@@ -6,11 +6,14 @@ from django.template.loader import render_to_string
 class Base(models.Model):
     """ Base class for all other models. This exists primarily so that Artifacts and Container can be imported as peers.
     """
-    title = models.CharField(max_length=256)
     slug = models.SlugField()
+    title = models.CharField(max_length=256)
+
+    def get_classname(self):
+        return self.__class__.__name__
     
     def to_html_template(self):
-        return render_to_string("%s.html" % self.__class__.__name__, {'self':self,})
+        return render_to_string("%s.html" % self.get_classname(), {'self':self,})
 
     def __str__(self):
         return self.title
@@ -19,7 +22,6 @@ class Artifact(Base):
     """ Base class for digital artifacts of all kinds.
     """
     pass
-
 
 class Container(Base):
     """ Base class for objects which can hold many artifacts and store their order.
