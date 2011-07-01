@@ -6,8 +6,8 @@ from django.template.loader import render_to_string
 class Base(models.Model):
     """ Base class for all other models. This exists primarily so that Artifacts and Container can be imported as peers.
     """
-    slug = models.SlugField()
     title = models.CharField(max_length=256)
+    slug = models.SlugField()
 
     def get_classname(self):
         return self.__class__.__name__
