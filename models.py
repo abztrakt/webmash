@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.loader import render_to_string
+from polymorphic.models import *
 
 # start Base classes
 
@@ -8,6 +9,7 @@ class Base(models.Model):
     """
     title = models.CharField(max_length=256)
     slug = models.SlugField()
+    __metaclass__ = PolymorphicMetaclass
 
     def get_classname(self):
         return self.__class__.__name__
@@ -35,14 +37,15 @@ class Folder(Container):
     """ Folders hold any number of objects and an order in which to display them.
     TODO: Provide a pager that can be used to go prev/next between objects.
     """
-    pass
+    __metaclass__ = DowncastMetaclass
 
 class Page(Container):
     """ Pages hold any number of artifacts and a layout.
     """
-    pass
+    __metaclass__ = DowncastMetaclass
 
 class LocalText(Artifact):
     """ A text artifact stored locally.
     """
     text = models.TextField()
+    __metaclass__ = DowncastMetaclass
