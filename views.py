@@ -46,9 +46,5 @@ def page(request, page_slug):
     children = []
     child_artifacts = page.related_items.values()
     for a in child_artifacts:
-        for t in installed_types:
-            try:
-                children.append(t.objects.get(id=a['id']))
-            except:
-                pass # catch exceptions silently since only one of the installed types will find a match
+        children.append(Base.objects.get(id=a['id']).downcast())
     return render_to_response('superpage.html', {'page':page, 'children':children,})
