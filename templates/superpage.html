@@ -3,6 +3,6 @@
 {% block content %}
 <h1>{{ page.title }}</h1>
 {% for c in children %}
-{{ c.to_html_template }}
+{{ c }}
 {% endfor %}
 {% endblock %}
