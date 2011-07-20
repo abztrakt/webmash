@@ -15,6 +15,8 @@ class Base(models.Model):
         return self.__class__.__name__
     
     def to_html_template(self):
+        """ THIS METHOD IS NOW DEPRECATED
+        """
         return render_to_string("%s.html" % self.get_classname(), {'self':self,})
 
     def __str__(self):

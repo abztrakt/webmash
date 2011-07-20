@@ -1,0 +1,10 @@
+This app relies on some third party packages:
+
+Python modules:
+ * django
+    - install with 'easy_install django==1.3'
+
+Django apps:
+ * django-polymorphic-models
+    - install via 'hg clone https://code.google.com/p/django-polymorphic-models/ django-polymorphic-models'
+    - copy polymorphic/ from django-polymorphic-models/ to somewhere in your PYTHONPATH
