@@ -34,6 +34,7 @@ class Container(Base):
 
 # end Base classes
 
+# start Container classes
 
 class Folder(Container):
     """ Folders hold any number of objects and an order in which to display them.
@@ -44,6 +45,16 @@ class Folder(Container):
 class Page(Container):
     """ Pages hold any number of artifacts and a layout.
     """
+    __metaclass__ = DowncastMetaclass
+
+# end Container classes
+
+# start Artifact classes
+
+class LocalImage(Artifact):
+    """ An image file stored locally.
+    """
+    image = models.ImageField(upload_to="static/uploads/%Y/%m/%d", blank=True)
     __metaclass__ = DowncastMetaclass
 
 class LocalText(Artifact):
