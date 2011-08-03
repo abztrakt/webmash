@@ -12,6 +12,10 @@ Python modules:
 
  * PIL
     - install via 'easy_install -f http://dist.plone.org/ PIL'
+ 
+ * django-sortedm2m
+    - http://pypi.python.org/pypi/django-sortedm2m/0.1.1
+    - install with 'easy_install django-sortedm2m'
 
 Django apps:
  * django-polymorphic-models

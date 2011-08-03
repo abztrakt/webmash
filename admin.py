@@ -3,10 +3,12 @@ from django.contrib import admin
 
 class FolderAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
+    raw_id_fields = ('related_items',)
 admin.site.register(Folder, FolderAdmin)
 
 class PageAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
+    raw_id_fields = ('related_items',)
 admin.site.register(Page, PageAdmin)
 
 class LocalImageAdmin(admin.ModelAdmin):

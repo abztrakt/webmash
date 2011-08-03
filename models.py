@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.loader import render_to_string
 from polymorphic.models import *
+from sortedm2m.fields import SortedManyToManyField
 
 # start Base classes
 
@@ -30,7 +31,14 @@ class Artifact(Base):
 class Container(Base):
     """ Base class for objects which can hold many artifacts and store their order.
     """
-    related_items = models.ManyToManyField(Base, related_name='related_items', blank=True)
+    related_items = SortedManyToManyField(Base, related_name='related_items')
+
+class Children(models.Model):
+    """ Extends the relationship between a Container and it's related items to hold order or weight.
+    """
+    child = models.ForeignKey(Base)
+    parent = models.ForeignKey(Container, related_name='parent_rel')
+    child_weight = models.IntegerField()
 
 # end Base classes
 
