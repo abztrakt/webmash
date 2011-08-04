@@ -53,6 +53,7 @@ class Folder(Container):
 class Page(Container):
     """ Pages hold any number of artifacts and a layout.
     """
+    custom_css = models.TextField(blank=True)
     __metaclass__ = DowncastMetaclass
 
 # end Container classes
