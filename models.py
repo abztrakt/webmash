@@ -60,6 +60,12 @@ class Page(Container):
 
 # start Artifact classes
 
+class LocalHTML(Artifact):
+    """ A chunk of HTML stored locally.
+    """
+    html = models.TextField()
+    __metaclass__ = DowncastMetaclass
+
 class LocalImage(Artifact):
     """ An image file stored locally.
     """
