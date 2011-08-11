@@ -1,6 +1,8 @@
 from webmash.models import *
 from django.contrib import admin
 
+admin.site.register(Base)
+
 class FolderAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     raw_id_fields = ('related_items',)
