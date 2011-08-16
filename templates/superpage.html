@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load webmash_extras %}
 
+{% block css %}
+{{ page.custom_css }}
+{% endblock %}
+
 {% block content %}
 <h1>{{ page.title }}</h1>
 {% for c in children %}

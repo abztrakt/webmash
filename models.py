@@ -53,11 +53,18 @@ class Folder(Container):
 class Page(Container):
     """ Pages hold any number of artifacts and a layout.
     """
+    custom_css = models.TextField(blank=True)
     __metaclass__ = DowncastMetaclass
 
 # end Container classes
 
 # start Artifact classes
+
+class LocalHTML(Artifact):
+    """ A chunk of HTML stored locally.
+    """
+    html = models.TextField()
+    __metaclass__ = DowncastMetaclass
 
 class LocalImage(Artifact):
     """ An image file stored locally.
