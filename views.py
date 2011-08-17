@@ -1,4 +1,10 @@
+from django import http
 from django.shortcuts import render_to_response
+from django.template.loader import get_template
+from django.template import Context
+import ho.pisa as pisa
+import cStringIO as StringIO
+import cgi
 from webmash.models import *
 
 installed_types = [Page, Folder, LocalText,]
@@ -48,3 +54,21 @@ def page(request, page_slug):
     for a in child_artifacts:
         children.append(Base.objects.get(id=a['id']).downcast())
     return render_to_response('superpage.html', {'page':page, 'children':children,})
+
+def page_to_pdf(request, page_slug):
+    """ Render a page with all of it's child objects.
+    """
+    page = Page.objects.get(slug=page_slug)
+    children = []
+    child_artifacts = page.related_items.values()
+    for a in child_artifacts:
+        children.append(Base.objects.get(id=a['id']).downcast())
+
+    template = get_template('superpage.html')
+    context = Context({'page': page, 'children':children,})
+    html = template.render(context)
+    result = StringIO.StringIO()
+    pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("UTF-8")), result)
+    if not pdf.err:
+        return http.HttpResponse(result.getvalue(), mimetype='application/pdf')
+    return http.HttpResponse('We had some errors<pre>%s</pre>' % cgi.escape(html))

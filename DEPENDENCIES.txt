@@ -17,6 +17,12 @@ Python modules:
     - http://pypi.python.org/pypi/django-sortedm2m/0.1.1
     - install with 'easy_install django-sortedm2m'
 
+ * xhtml2pdf
+    - install with 'pip install xhtml2pdf'
+
+ * pisa
+    - install with 'pip install pisa'
+
 Django apps:
  * django-polymorphic-models
     - http://code.google.com/p/django-polymorphic-models/
