@@ -69,7 +69,7 @@ def page_to_pdf(request, page_slug):
     context = Context({'page': page, 'children':children,})
     html = template.render(context)
     result = StringIO.StringIO()
-    # TODO: get this pdfcss to read from a css file in the site
+    #TODO: get this pdfcss to read from a css file in the site
     pdfcss = """
 * { background-color: none; }
 html, address,
@@ -81,7 +81,7 @@ h1, h2, h3, h4,
 h5, h6, noframes,
 ol, p, ul, center,
 dir, hr, menu, pre   { display: block; unicode-bidi: embed }
-li              { display: list-item }
+li              { display: block; margin: 1px; padding: 1px; }
 head            { display: none }
 table           { display: table }
 tr              { display: table-row }
@@ -131,6 +131,7 @@ menu, dd        { margin-left: 40px }
 ol              { list-style-type: decimal }
 ol ul, ul ol,
 ul ul, ol ol    { margin-top: 0; margin-bottom: 0 }
+ul li           { list-style-type: none; }
 u, ins          { text-decoration: underline }
 br:before       { content: "\A"; white-space: pre-line }
 center          { text-align: center }
